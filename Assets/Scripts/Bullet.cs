@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
 
 
 
-        transform.Translate(new Vector3(0f, _shotDirection*speedBullet, 0f));
+        transform.Translate(new Vector3(0f, _shotDirection*speedBullet*Time.deltaTime, 0f));
     }
 
     public void SetPlayer(int playerNumber) {
