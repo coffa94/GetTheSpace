@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private float _timerShot;
 
+    public int PlayerNumber { get => playerNumber; set => playerNumber = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +28,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //shot when fire is clicked and the timer is zero
-        if (Input.GetButton("Fire" + playerNumber) && _timerShot<=0f) {
+        if (Input.GetButton("Fire" + PlayerNumber) && _timerShot<=0f) {
             _timerShot = shotFrequency;
             GameObject newBullet = Instantiate(prefabShot);
             newBullet.transform.position = shootPosition.position;
 
-            newBullet.GetComponent<Bullet>().SetPlayer(playerNumber);
+            newBullet.GetComponent<Bullet>().SetPlayer(PlayerNumber);
             
         }
         _timerShot -= Time.deltaTime;
@@ -39,15 +41,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         //horizontal movement
-        float horizontal = Input.GetAxis("Horizontal" + playerNumber);
-        if (horizontal!=0) {
-            _rigidbody.position = new Vector3(_rigidbody.position.x + horizontal*speedMovement, _rigidbody.position.y);
-        }
+        float horizontal = Input.GetAxis("Horizontal" + PlayerNumber);
+
+        _rigidbody.velocity = new Vector2(horizontal * speedMovement, _rigidbody.velocity.y);
+        
 
         //vertical movement
-        float vertical = Input.GetAxis("Vertical" + playerNumber);
-        if (vertical != 0) {
-            _rigidbody.position = new Vector3(_rigidbody.position.x, _rigidbody.position.y + vertical * speedMovement);
-        }
+        float vertical = Input.GetAxis("Vertical" + PlayerNumber);
+        
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, vertical * speedMovement);
+       
     }
 }
