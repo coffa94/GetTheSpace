@@ -6,10 +6,13 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speedBullet=10f;
 
-    private int _playerNumber;
+    private int _playerNumber; //TODO maybe this info is useless because i have it in the playerData
     private int _shotDirection;
+    private PlayerData playerData;
 
     private Rigidbody2D _rigidbody;
+
+    public PlayerData PlayerData { get => playerData; set => playerData = value; }
 
 
     // Start is called before the first frame update
@@ -41,10 +44,15 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    public int GetPlayer() {
+        return _playerNumber;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<EnemyController>()) {
             //TODO controllare se nemico è stato colpito dal proiettile del suo giocatore bersaglio
             if (collision.GetComponent<EnemyController>().GetPlayerTarget() == _playerNumber) {
+                playerData.AddScore(collision.gameObject.GetComponent<EnemyController>().ScorePoints);
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
             }

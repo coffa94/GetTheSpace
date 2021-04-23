@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timeSpawn;
     [SerializeField] private float minDistanceFromPlayer = 0.2f;
     [SerializeField] private float percentageScreenToAvoid;
+    [SerializeField] private PlayerData player1Data;
+    [SerializeField] private PlayerData player2Data;
 
     private float _timerNewEnemy;
     private Vector3 _positionXNewEnemy;

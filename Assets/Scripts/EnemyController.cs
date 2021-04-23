@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform shootPosition;
     [SerializeField] private GameObject enemyBullet;
     [SerializeField] private Transform playerTargetTransform;
+    [SerializeField] private int scorePoints;
+    
 
     private Vector3 _destinationPosition;
 
@@ -18,6 +20,7 @@ public class EnemyController : MonoBehaviour
 
     public Transform PlayerTargetTransform { get => playerTargetTransform; set => playerTargetTransform = value; }
     public Vector3 DestinationPosition { get => _destinationPosition; set => _destinationPosition = value; }
+    public int ScorePoints { get => scorePoints; set => scorePoints = value; }
 
 
     // Start is called before the first frame update
@@ -58,5 +61,8 @@ public class EnemyController : MonoBehaviour
     public int GetPlayerTarget() {
         return playerTargetTransform.GetComponent<PlayerController>().PlayerNumber;
     }
+
+   
+    
 
 }

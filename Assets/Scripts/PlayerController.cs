@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedMovement=0.2f;
     [SerializeField] private Transform shootPosition;
     [SerializeField] private GameObject prefabShot;
-    [SerializeField] private int playerNumber;
+    [SerializeField] private int playerNumber;  //TODO maybe this is useless because i have this info in the playerData
     [SerializeField] private float shotFrequency;
+    [SerializeField] private PlayerData playerData; //playerData to have player info
 
     private Rigidbody2D _rigidbody;
 
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
             newBullet.transform.position = shootPosition.position;
 
             newBullet.GetComponent<Bullet>().SetPlayer(PlayerNumber);
+            newBullet.GetComponent<Bullet>().PlayerData = playerData;
             
         }
         _timerShot -= Time.deltaTime;

@@ -227,6 +227,7 @@ MonoBehaviour:
   prefabShot: {fileID: 4801141157204639353, guid: 44f76bd810ea56b48a9d74f37479bc9f, type: 3}
   playerNumber: 2
   shotFrequency: 0.5
+  playerData: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
 --- !u!50 &132397658
 Rigidbody2D:
   serializedVersion: 4
@@ -382,6 +383,7 @@ GameObject:
   - component: {fileID: 274109727}
   - component: {fileID: 274109729}
   - component: {fileID: 274109728}
+  - component: {fileID: 274109730}
   m_Layer: 5
   m_Name: ScorePlayer1
   m_TagString: Untagged
@@ -450,6 +452,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274109726}
   m_CullTransparentMesh: 1
+--- !u!114 &274109730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274109726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39ea422fa938424c88601d022abb149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
+  scoreText: {fileID: 0}
 --- !u!1 &416480236
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,6 +864,7 @@ GameObject:
   - component: {fileID: 1328315091}
   - component: {fileID: 1328315093}
   - component: {fileID: 1328315092}
+  - component: {fileID: 1328315094}
   m_Layer: 5
   m_Name: ScorePlayer2
   m_TagString: Untagged
@@ -916,6 +933,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328315090}
   m_CullTransparentMesh: 1
+--- !u!114 &1328315094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328315090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39ea422fa938424c88601d022abb149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
+  scoreText: {fileID: 0}
 --- !u!1 &1371821038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1199,7 @@ MonoBehaviour:
   prefabShot: {fileID: 479514419290791409, guid: 3fdacbf20ac7c4e40bce70470726c347, type: 3}
   playerNumber: 1
   shotFrequency: 0.5
+  playerData: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
 --- !u!1 &1447514038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,6 +1339,8 @@ MonoBehaviour:
   timeSpawn: 5
   minDistanceFromPlayer: 0.2
   percentageScreenToAvoid: 15
+  player1Data: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
+  player2Data: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
 --- !u!4 &1482742174
 Transform:
   m_ObjectHideFlags: 0

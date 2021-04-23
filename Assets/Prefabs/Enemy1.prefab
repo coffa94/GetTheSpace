@@ -146,14 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e3b92e1d1835a345bb5db54ca27b319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSelected: {fileID: 0}
-  minDistanceFromPlayer: 0.25
   speedMovement: 0.1
-  approximationPixelPosition: 25
   shotFrequency: 2
   shootPosition: {fileID: 6945748446484313514}
   enemyBullet: {fileID: 5026394949290425777, guid: 6f1d5598f1e91d642b91767bd1368acb, type: 3}
-  playerObject: {fileID: 0}
+  playerTargetTransform: {fileID: 0}
+  scorePoints: 1
 --- !u!1 &6945748446484313517
 GameObject:
   m_ObjectHideFlags: 0
