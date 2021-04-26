@@ -182,7 +182,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1873250449
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 78eacc12db9acbf4682dd02579d3e547, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -465,7 +465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
-  scoreText: {fileID: 0}
 --- !u!1 &416480236
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +549,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725392004
 GameObject:
@@ -742,7 +741,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175130849
 GameObject:
@@ -946,7 +945,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
-  scoreText: {fileID: 0}
 --- !u!1 &1371821038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1105,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1873250449
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 225dfaebf8989fa4c8e7d985889675d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1133,7 +1131,7 @@ Transform:
   m_Children:
   - {fileID: 725392005}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1372736255
 Rigidbody2D:
@@ -1332,15 +1330,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - {fileID: 6945748444787642482, guid: 37fe17b7132a3674bb13bec6056c871e, type: 3}
+  meteorList:
+  - {fileID: 3309976222031394965, guid: 0f202d043c76b1c4c9b2fe286e476b48, type: 3}
   player1Transform: {fileID: 1372736254}
   cameraPlayer1: {fileID: 1013423206}
   player2Transform: {fileID: 132397656}
   cameraPlayer2: {fileID: 1490645052}
-  timeSpawn: 5
+  timeEnemySpawn: 3
+  timeMeteorSpawn: 4
   minDistanceFromPlayer: 0.2
   percentageScreenToAvoid: 15
   player1Data: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
   player2Data: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
+  maxEnemiesNumber: 5
 --- !u!4 &1482742174
 Transform:
   m_ObjectHideFlags: 0

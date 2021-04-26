@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 723522567
+  m_SortingLayer: 1
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 7247e819e4ec14a46b019581708112e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 5026394949290425777, guid: 6f1d5598f1e91d642b91767bd1368acb, type: 3}
   playerTargetTransform: {fileID: 0}
   scorePoints: 1
+  life: 1
 --- !u!1 &6945748446484313517
 GameObject:
   m_ObjectHideFlags: 0

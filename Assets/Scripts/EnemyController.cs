@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject enemyBullet;
     [SerializeField] private Transform playerTargetTransform;
     [SerializeField] private int scorePoints;
+    [SerializeField] private int life;
     
 
     private Vector3 _destinationPosition;
@@ -62,7 +63,11 @@ public class EnemyController : MonoBehaviour
         return playerTargetTransform.GetComponent<PlayerController>().PlayerNumber;
     }
 
-   
+    public int DecreaseLife(int damage) {
+        life -= damage;
+        Debug.Log("Enemy player " + GetPlayerTarget() + " HitByShot, remaining life= " + life);
+        return life;
+    }
     
 
 }

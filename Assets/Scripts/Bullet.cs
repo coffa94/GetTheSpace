@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speedBullet=10f;
+    [SerializeField] private int damageBullet = 1;
 
     private int _playerNumber; //TODO maybe this info is useless because i have it in the playerData
     private int _shotDirection;
@@ -49,14 +50,39 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        //trigger with enemy's spaceship
         if (collision.GetComponent<EnemyController>()) {
-            //TODO controllare se nemico è stato colpito dal proiettile del suo giocatore bersaglio
+            // nemico è stato colpito dal proiettile del suo giocatore bersaglio
             if (collision.GetComponent<EnemyController>().GetPlayerTarget() == _playerNumber) {
-                playerData.AddScore(collision.gameObject.GetComponent<EnemyController>().ScorePoints);
-                Destroy(collision.gameObject);
+                //destroy bullet
                 Destroy(gameObject);
+                //decrease enemy's life and checking remaining life
+                if (collision.GetComponent<EnemyController>().DecreaseLife(damageBullet) <= 0) {
+                    //increase scorePlayer and destroy enemy
+                    playerData.AddScore(collision.gameObject.GetComponent<EnemyController>().ScorePoints);
+                    Destroy(collision.gameObject);
+
+                    //use of singleton to decrease number enemies (for player _playerNumber) in the game
+                    GameManager.gameManager.DecreaseEnemies(_playerNumber);
+                }
+                
             }
-            Debug.Log("Nemico " + _playerNumber + " colpito");
+        }
+
+        //trigger with obstacle
+        if(collision.GetComponent<MeteorController>()) {
+            // ostacolo è stato colpito dal proiettile del suo giocatore bersaglio
+            if (collision.GetComponent<MeteorController>().PlayerNumberTarget == _playerNumber) {
+                //destroy bullet
+                Destroy(gameObject);
+                //decrease obstacle's life and checking remaining life
+                if (collision.GetComponent<MeteorController>().DecreaseLife(damageBullet) <= 0) {
+                    //increase scorePlayer and destroy obstacle
+                    playerData.AddScore(collision.gameObject.GetComponent<MeteorController>().ScorePoints);
+                    Destroy(collision.gameObject);
+                }
+
+            }
         }
     }
 
