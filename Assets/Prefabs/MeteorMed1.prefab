@@ -138,3 +138,4 @@ MonoBehaviour:
   speedMovement: 0.025
   scorePoints: 1
   life: 1
+  damageMeteor: 5

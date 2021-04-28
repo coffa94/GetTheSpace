@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     public PlayerData PlayerData { get => playerData; set => playerData = value; }
+    public int DamageBullet { get => damageBullet; set => damageBullet = value; }
 
 
     // Start is called before the first frame update
@@ -57,7 +58,7 @@ public class Bullet : MonoBehaviour
                 //destroy bullet
                 Destroy(gameObject);
                 //decrease enemy's life and checking remaining life
-                if (collision.GetComponent<EnemyController>().DecreaseLife(damageBullet) <= 0) {
+                if (collision.GetComponent<EnemyController>().DecreaseLife(DamageBullet) <= 0) {
                     //increase scorePlayer and destroy enemy
                     playerData.AddScore(collision.gameObject.GetComponent<EnemyController>().ScorePoints);
                     Destroy(collision.gameObject);
@@ -76,7 +77,7 @@ public class Bullet : MonoBehaviour
                 //destroy bullet
                 Destroy(gameObject);
                 //decrease obstacle's life and checking remaining life
-                if (collision.GetComponent<MeteorController>().DecreaseLife(damageBullet) <= 0) {
+                if (collision.GetComponent<MeteorController>().DecreaseLife(DamageBullet) <= 0) {
                     //increase scorePlayer and destroy obstacle
                     playerData.AddScore(collision.gameObject.GetComponent<MeteorController>().ScorePoints);
                     Destroy(collision.gameObject);

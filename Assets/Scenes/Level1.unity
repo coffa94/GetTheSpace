@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 38089471}
   - component: {fileID: 38089470}
   - component: {fileID: 38089469}
+  - component: {fileID: 38089472}
   m_Layer: 5
   m_Name: LifePlayer2
   m_TagString: Untagged
@@ -213,6 +214,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38089467}
   m_CullTransparentMesh: 1
+--- !u!114 &38089472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38089467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f84038d568a0a4a97e7e92c4b61b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
 --- !u!1 &132397654
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +332,7 @@ MonoBehaviour:
   playerNumber: 2
   shotFrequency: 0.5
   playerData: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
+  damagePlayer: 1
 --- !u!50 &132397658
 Rigidbody2D:
   serializedVersion: 4
@@ -653,6 +668,7 @@ GameObject:
   - component: {fileID: 657402028}
   - component: {fileID: 657402027}
   - component: {fileID: 657402026}
+  - component: {fileID: 657402029}
   m_Layer: 5
   m_Name: LifePlayer1
   m_TagString: Untagged
@@ -731,6 +747,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657402024}
   m_CullTransparentMesh: 1
+--- !u!114 &657402029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657402024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f84038d568a0a4a97e7e92c4b61b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
 --- !u!1 &725392004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,6 +1498,7 @@ MonoBehaviour:
   playerNumber: 1
   shotFrequency: 0.5
   playerData: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
+  damagePlayer: 1
 --- !u!1 &1447514038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1645,9 @@ MonoBehaviour:
   player1Data: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
   player2Data: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
   maxEnemiesNumber: 5
+  timeGame: 60
+  UITimerPlayer1: {fileID: 1175130851}
+  UITimerPlayer2: {fileID: 726403676}
 --- !u!4 &1482742174
 Transform:
   m_ObjectHideFlags: 0
@@ -1793,6 +1826,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aed47777b73de428bb5dff472d7436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDataArray:
+  - {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
+  - {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
 --- !u!68 &1705502487
 EdgeCollider2D:
   m_ObjectHideFlags: 0

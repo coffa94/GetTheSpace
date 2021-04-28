@@ -14,8 +14,10 @@ public class PlayerData : ScriptableObject
 
     //programming pattern observer/observable
     public delegate void OnScoreChanged(int score);
+    public delegate void OnLifeChanged(float newLife);
 
     public OnScoreChanged onScoreChanged;
+    public OnLifeChanged onLifeChanged;
 
     //avviata all'inizio del gioco per quanto riguarda gli scriptableObjects
     private void OnEnable() {
@@ -30,10 +32,17 @@ public class PlayerData : ScriptableObject
         onScoreChanged.Invoke(score);
     }
 
-    public void DecreaseHealth(int damage) {
-        //decrease health by damage points
+    public void DecreaseLife(int damage) {
+        //decrease player's life by damage value
         health -= damage;
-    }
+        Debug.Log("Health player " + PlayerNumber + " = " + health);
+        float percentageLife = (float)health / maxHealth;
+        onLifeChanged.Invoke(percentageLife);
 
+        if (health <= 0) {
+            GameManager.gameManager.GameEnd();
+        }
+        
+    }
 
 }

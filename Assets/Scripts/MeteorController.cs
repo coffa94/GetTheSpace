@@ -7,6 +7,7 @@ public class MeteorController : MonoBehaviour
     [SerializeField] private float speedMovement = 0.1f;
     [SerializeField] private int scorePoints;
     [SerializeField] private int life;
+    [SerializeField] private int damageMeteor;
 
 
     private int _playerNumberTarget;
@@ -16,6 +17,7 @@ public class MeteorController : MonoBehaviour
 
     public int PlayerNumberTarget { get => _playerNumberTarget; set => _playerNumberTarget = value; }
     public int ScorePoints { get => scorePoints; set => scorePoints = value; }
+    public int DamageMeteor { get => damageMeteor; set => damageMeteor = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,5 @@ public class MeteorController : MonoBehaviour
         Debug.Log("Obstacle player " + PlayerNumberTarget + " HitByShot, remaining life= " + life);
         return life;
     }
-
 
 }

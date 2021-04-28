@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform playerTargetTransform;
     [SerializeField] private int scorePoints;
     [SerializeField] private int life;
+    [SerializeField] private int damageEnemy;
     
 
     private Vector3 _destinationPosition;
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour
     public Transform PlayerTargetTransform { get => playerTargetTransform; set => playerTargetTransform = value; }
     public Vector3 DestinationPosition { get => _destinationPosition; set => _destinationPosition = value; }
     public int ScorePoints { get => scorePoints; set => scorePoints = value; }
+    public int DamageEnemy { get => damageEnemy; set => damageEnemy = value; }
 
 
     // Start is called before the first frame update

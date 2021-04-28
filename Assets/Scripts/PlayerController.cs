@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerNumber;  //TODO maybe this is useless because i have this info in the playerData
     [SerializeField] private float shotFrequency;
     [SerializeField] private PlayerData playerData; //playerData to have player info
+    [SerializeField] private int damagePlayer;
+    [SerializeField] private int moltDamageOpponentPlayer;
+    
 
     private Rigidbody2D _rigidbody;
 
@@ -53,5 +56,64 @@ public class PlayerController : MonoBehaviour
         
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, vertical * speedMovement);
        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        //trigger with bulletEnemy
+        if (collision.GetComponent<BulletEnemy>()) {
+            // player è stato colpito dal proiettile del nemico che ha player come target
+            if (collision.GetComponent<BulletEnemy>().PlayerTarget == playerNumber) {
+
+                //decrease player's life
+                playerData.DecreaseLife(collision.GetComponent<BulletEnemy>().DamageBullet);
+
+            }
+        }
+
+        //trigger with obstacle
+        if (collision.GetComponent<MeteorController>()) {
+            // player è stato colpito da un ostacolo
+            
+            //decrease player's life
+            playerData.DecreaseLife(collision.GetComponent<MeteorController>().DamageMeteor);
+
+            //decrease meteor's life and checking remaining life
+            if (collision.GetComponent<MeteorController>().DecreaseLife(damagePlayer) <= 0) {
+                //destroy meteor
+                Destroy(collision.gameObject);
+
+            }
+        }
+
+        //trigger with enemy's spaceship
+        if (collision.GetComponent<EnemyController>()) {
+            //no checking of enemyPlayerTarget and playerNumber
+            //decrease player's life
+            playerData.DecreaseLife(collision.GetComponent<EnemyController>().DamageEnemy);
+
+            //decrease enemy's life and checking remaining life
+            if (collision.GetComponent<EnemyController>().DecreaseLife(damagePlayer) <= 0) {
+                //destroy enemy
+                Destroy(collision.gameObject);
+
+                //use of singleton to decrease number enemies (for player _playerNumber) in the game
+                GameManager.gameManager.DecreaseEnemies(playerNumber);
+            }
+        }
+
+
+        //trigger with opponent player's bullet
+        if (collision.gameObject.GetComponent<Bullet>()) {
+            //checking playerNumber with bullet's playerNumber (who shot the bullet)
+            if (collision.GetComponent<Bullet>().GetPlayer() != playerNumber) {
+                
+                //decrease player's life
+                playerData.DecreaseLife(collision.GetComponent<Bullet>().DamageBullet*moltDamageOpponentPlayer);
+
+                //destroy bullet
+                Destroy(collision.gameObject);
+
+            }
+        }
     }
 }

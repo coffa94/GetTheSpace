@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletEnemy : MonoBehaviour
 {
     [SerializeField] private float speedBullet=0.1f;
+    [SerializeField] private int damageBullet;
 
     private Rigidbody2D _rigidbody;
     private Vector2 _destination;
@@ -13,6 +14,7 @@ public class BulletEnemy : MonoBehaviour
 
     public Vector2 Destination { get => _destination; set => _destination = value; }
     public int PlayerTarget { get => _playerTarget; set => _playerTarget = value; }
+    public int DamageBullet { get => damageBullet; set => damageBullet = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +33,12 @@ public class BulletEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<PlayerController>()) {
-            if (PlayerTarget == collision.GetComponent<PlayerController>().PlayerNumber) {
-                Debug.Log("Giocatore " + collision.GetComponent<PlayerController>().PlayerNumber + " colpito dal proiettilo nemico " + PlayerTarget);
-                //destroy the bullet after its collision with the playerTarget of the enemy bullet
-                Destroy(gameObject);
-            }
+            //i don't check anymore if the bulletEnemy's playterTarget is the same of the collision,
+            //enemies shot towards their player target position so if a player is hit by an enemy bullet is because was the target of the enemy that shot
+            Debug.Log("Giocatore " + collision.GetComponent<PlayerController>().PlayerNumber + " colpito dal proiettilo nemico");
+            //destroy the bullet after its collision with the player
+            Destroy(gameObject);
+            
             
         }
     }

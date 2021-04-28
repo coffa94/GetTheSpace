@@ -153,6 +153,7 @@ MonoBehaviour:
   playerTargetTransform: {fileID: 0}
   scorePoints: 1
   life: 1
+  damageEnemy: 15
 --- !u!1 &6945748446484313517
 GameObject:
   m_ObjectHideFlags: 0
