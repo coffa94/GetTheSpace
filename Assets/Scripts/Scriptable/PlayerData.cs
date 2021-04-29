@@ -11,6 +11,8 @@ public class PlayerData : ScriptableObject
 
     public int maxHealth=100; //max or start health
 
+    public bool playerHit;
+
 
     //programming pattern observer/observable
     public delegate void OnScoreChanged(int score);
@@ -23,6 +25,7 @@ public class PlayerData : ScriptableObject
     private void OnEnable() {
         health = maxHealth;
         score = 0;
+        playerHit = false;
     }
 
     public void AddScore(int points) {
