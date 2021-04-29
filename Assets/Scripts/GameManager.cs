@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerData player1Data;
     [SerializeField] private PlayerData player2Data;
     [SerializeField] private int maxEnemiesNumber;
+    [SerializeField] private int timeGame;
+    [SerializeField] private Text UITimerPlayer1; //TODO?? can be managed by scriptableObject
+    [SerializeField] private Text UITimerPlayer2; //TODO?? can be managed by scriptableObject
+    [SerializeField] private GameData gameData;
+    [SerializeField] private Text winningText;
 
     //enemy variables
     private float _timerNewEnemy;
@@ -36,6 +42,8 @@ public class GameManager : MonoBehaviour
 
     private float approximationPixelPositionX; //in proportion of screen size
 
+    private float timePassed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +54,8 @@ public class GameManager : MonoBehaviour
         //set the approximationPixelPositionX proportionally to the screen size width, enemies won't reach this pixelPositionX
         approximationPixelPositionX = cameraPlayer1.pixelWidth * percentageScreenToAvoid / 100f;
 
+
+        //TODO separare creazione nemici e creazione meteoriti dalla logica di gioco del GameManager (creare script EnemySpawner e MeteorSpawner)
         //new enemy creation
         CreateEnemy();
         _timerNewEnemy = timeEnemySpawn;
@@ -76,6 +86,58 @@ public class GameManager : MonoBehaviour
 
         }
         _timerNewMeteor -= Time.deltaTime;
+
+        //update timer of the game
+        UpdateTimerGame();
+    }
+
+    private void UpdateTimerGame() {
+        timePassed += Time.deltaTime;
+
+        //after 1 second update the timeGame and the UI Timer
+        if (timePassed > 1.0f) {
+            timeGame--;
+            timePassed = 0f;
+            UITimerPlayer1.text = "Timer: " + timeGame.ToString();
+            UITimerPlayer2.text = "Timer: " + timeGame.ToString();
+
+            //time of the game finish
+            if (timeGame <= 0) {
+                GameEnd();
+            }
+        }
+        
+    }
+
+    public void GameEnd() {
+        //execute this function once per game
+        if (!gameData.gameEnded) {
+            //TODO load another scene and use the playerData scriptableObject to choose who win the game
+            if (player1Data.health > 0 && player2Data.health > 0) {
+                if (player1Data.score == player2Data.score) {       //draw
+                    Debug.Log("DRAW");
+                    winningText.text = "DRAW";
+                } else if (player1Data.score > player2Data.score) { //player1 win
+                    Debug.Log("Player1 WIN");
+                    winningText.text = "Player1 WIN";
+                } else {                                            //player2 win
+                    Debug.Log("Player2 WIN");
+                    winningText.text = "Player2 WIN";
+                }
+            } else if (player1Data.health > 0 && player2Data.health <= 0) {
+                Debug.Log("Player1 WIN");
+                winningText.text = "Player1 WIN";
+            } else if (player1Data.health <= 0 && player2Data.health > 0) {
+                Debug.Log("Player2 WIN");
+                winningText.text = "Player2 WIN";
+            } else {
+                Debug.Log("Computer WIN");
+                winningText.text = "Computer WIN";
+            }
+            gameData.EndGame();
+        }
+
+        
     }
 
     void CreateEnemy() {
@@ -148,7 +210,7 @@ public class GameManager : MonoBehaviour
     }
 
     private Vector3 ChoosePositionXToSpawn() {
-        float startingPositionX = Random.Range(cameraPlayer1.pixelRect.x + approximationPixelPositionX, cameraPlayer1.pixelWidth);
+        float startingPositionX = Random.Range(cameraPlayer1.pixelRect.x + approximationPixelPositionX, cameraPlayer1.pixelWidth - approximationPixelPositionX);
         Vector3 positionXToSpawn = cameraPlayer1.ScreenToWorldPoint(new Vector3(startingPositionX, cameraPlayer1.pixelHeight / 2, 0f));
         positionXToSpawn.z = 0f;
 
