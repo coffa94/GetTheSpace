@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeCooldownDamage: 3
+  playerData: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
 --- !u!1 &268605420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,6 +1718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeCooldownDamage: 3
+  playerData: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
 --- !u!114 &1372736258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,7 +1899,7 @@ MonoBehaviour:
   player1Data: {fileID: 11400000, guid: b9b15b5f9b328ba4d96f5006007a25dd, type: 2}
   player2Data: {fileID: 11400000, guid: 4743ff9c2e40d74469c50025e00668d5, type: 2}
   maxEnemiesNumber: 5
-  timeGame: 20
+  timeGame: 60
   UITimerPlayer1: {fileID: 1175130851}
   UITimerPlayer2: {fileID: 726403676}
   gameData: {fileID: 11400000, guid: 78484847d58007b48adeb96174415879, type: 2}
